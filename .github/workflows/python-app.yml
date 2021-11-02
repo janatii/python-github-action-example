@@ -15,9 +15,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      name: fetch master
-      run: |
-        git fetch --prune --unshallow
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: 2
+    - run: git checkout HEAD^
+
     - name: Set up Python 3.8
       uses: actions/setup-python@v2
       with:
